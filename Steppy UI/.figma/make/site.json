@@ -1,0 +1,10 @@
+{
+  "description": "Create custom user interfaces effortlessly with this intuitive web application, designed for developers and designers to streamline their workflow.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

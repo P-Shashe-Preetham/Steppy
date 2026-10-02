@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.steppy"
+    namespace = "com.steppy.app"
     compileSdk = 37
 
     defaultConfig {
-        applicationId = "com.example.steppy"
+        applicationId = "com.steppy.app"
         minSdk = 26
         targetSdk = 37
         versionCode = 1

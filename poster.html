@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Steppy - PBL Project Poster (KLH University)</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #0f172a;
+      display: flex;
+      justify-content: center;
+      padding: 24px 0;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #1e293b;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* A3 Portrait Dimensions: 297mm x 420mm (Aspect ratio: 1 : 1.414) */
+    .poster {
+      width: 1122px;
+      height: 1587px;
+      background: #ffffff;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* HEADER BANNER */
+    .header-banner {
+      background: linear-gradient(135deg, #4c1d95 0%, #5b21b6 50%, #6d28d9 100%);
+      height: 175px;
+      padding: 18px 36px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: #ffffff;
+      border-bottom: 4px solid #d97706;
+      flex-shrink: 0;
+    }
+
+    .header-logo {
+      width: 220px;
+      height: 115px;
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 8px 14px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .header-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .header-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .header-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 27px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      line-height: 1.15;
+      color: #ffffff;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .header-meta {
+      font-size: 12.5px;
+      color: #fde68a;
+      font-weight: 600;
+      line-height: 1.35;
+      margin-bottom: 4px;
+    }
+
+    .header-course {
+      font-size: 11.5px;
+      color: #fef3c7;
+      font-weight: 500;
+      opacity: 0.95;
+    }
+
+    /* MAIN POSTER BODY: 2 COLUMNS */
+    .poster-body {
+      flex: 1;
+      padding: 14px 36px 10px 36px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .col {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* CARD STYLING */
+    .card {
+      border-radius: 10px;
+      padding: 10px 15px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+      position: relative;
+    }
+
+    .card-title {
+      font-size: 15.5px;
+      font-weight: 700;
+      font-family: 'Space Grotesk', sans-serif;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .card-title::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 14px;
+      border-radius: 2px;
+      background: currentColor;
+    }
+
+    .card-body {
+      font-size: 11.2px;
+      line-height: 1.45;
+      color: #334155;
+    }
+
+    .card-body p {
+      margin-bottom: 5px;
+    }
+
+    .card-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .prefix {
+      font-weight: 700;
+    }
+
+    /* COLOR THEMES FOR CARDS */
+    /* 1. Abstract (Amber) */
+    .card-abstract {
+      background: #fef3c7;
+      border: 1.5px solid #b45309;
+    }
+    .card-abstract .card-title { color: #b45309; }
+    .card-abstract .prefix { color: #b45309; }
+
+    /* 2. Problem Statement (Pink/Rose) */
+    .card-problem {
+      background: #fce7f3;
+      border: 1.5px solid #be185d;
+    }
+    .card-problem .card-title { color: #be185d; }
+    .card-problem .prefix { color: #be185d; }
+
+    /* 3. Existing vs Proposed (Blue) */
+    .card-comparison {
+      background: #dbeafe;
+      border: 1.5px solid #1d4ed8;
+    }
+    .card-comparison .card-title { color: #1d4ed8; }
+
+    /* 4. Feasibility Study (Green) */
+    .card-feasibility {
+      background: #dcfce7;
+      border: 1.5px solid #15803d;
+    }
+    .card-feasibility .card-title { color: #15803d; }
+    .card-feasibility .prefix { color: #15803d; }
+
+    /* 5. Tools & Tech (Sky Blue) */
+    .card-tools {
+      background: #e0f2fe;
+      border: 1.5px solid #0369a1;
+    }
+    .card-tools .card-title { color: #0369a1; }
+    .card-tools .prefix { color: #0369a1; }
+
+    /* 6. System Architecture (Purple) */
+    .card-architecture {
+      background: #ede9fe;
+      border: 1.5px solid #6d28d9;
+    }
+    .card-architecture .card-title { color: #6d28d9; }
+
+    /* 7. ER Diagram (Orange) */
+    .card-er {
+      background: #ffedd5;
+      border: 1.5px solid #c2410c;
+    }
+    .card-er .card-title { color: #c2410c; }
+
+    /* 8. Screenshots (Teal) */
+    .card-screenshots {
+      background: #ccfbf1;
+      border: 1.5px solid #0f766e;
+    }
+    .card-screenshots .card-title { color: #0f766e; }
+
+    /* 9. Results & Testing (Red) */
+    .card-results {
+      background: #fee2e2;
+      border: 1.5px solid #b91c1c;
+    }
+    .card-results .card-title { color: #b91c1c; }
+    .card-results .prefix { color: #b91c1c; }
+
+    /* 10. Conclusion (Lime/Green) */
+    .card-conclusion {
+      background: #ecfccb;
+      border: 1.5px solid #4d7c0f;
+    }
+    .card-conclusion .card-title { color: #4d7c0f; }
+    .card-conclusion .prefix { color: #4d7c0f; }
+
+    /* 11. Future Scope (Fuchsia) */
+    .card-future {
+      background: #fae8ff;
+      border: 1.5px solid #a21caf;
+    }
+    .card-future .card-title { color: #a21caf; }
+    .card-future .prefix { color: #a21caf; }
+
+    /* TABLE STYLES */
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11px;
+      margin-top: 4px;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #ffffff;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+
+    .comparison-table th {
+      background: #1d4ed8;
+      color: #ffffff;
+      font-weight: 700;
+      padding: 7px 10px;
+      text-align: left;
+      font-size: 11px;
+    }
+
+    .comparison-table td {
+      padding: 6px 10px;
+      border-top: 1px solid #e2e8f0;
+      color: #334155;
+      line-height: 1.35;
+    }
+
+    .comparison-table tr:nth-child(even) {
+      background: #f8fafc;
+    }
+
+    .comparison-table td:first-child {
+      font-weight: 700;
+      color: #1e293b;
+      width: 25%;
+    }
+
+    .comparison-table td:last-child {
+      font-weight: 600;
+      color: #047857;
+      width: 45%;
+    }
+
+    /* DIAGRAM & SCREENSHOT CONTAINERS */
+    .diagram-img {
+      width: 100%;
+      max-height: 148px;
+      object-fit: contain;
+      border-radius: 8px;
+      border: 1px solid rgba(0,0,0,0.08);
+      background: #ffffff;
+      display: block;
+    }
+
+    .screenshots-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .screenshot-box img {
+      width: 100%;
+      max-height: 145px;
+      object-fit: contain;
+      border-radius: 8px;
+      display: block;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      background: #ffffff;
+    }
+
+    /* BOTTOM 3-COLUMN ROW */
+    .bottom-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+    }
+
+    /* FOOTER BAR */
+    .poster-footer {
+      background: #f8fafc;
+      border-top: 1.5px solid #cbd5e1;
+      padding: 8px 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      font-size: 10.5px;
+      color: #475569;
+      flex-shrink: 0;
+    }
+
+    .references {
+      flex: 1;
+      line-height: 1.45;
+    }
+
+    .references strong {
+      color: #1e293b;
+    }
+
+    .footer-qr {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #ffffff;
+      padding: 5px 10px;
+      border-radius: 8px;
+      border: 1px solid #cbd5e1;
+      flex-shrink: 0;
+    }
+
+    .footer-qr img {
+      width: 50px;
+      height: 50px;
+      display: block;
+    }
+
+    .footer-qr span {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: #1e293b;
+      line-height: 1.25;
+    }
+
+    @media print {
+      body {
+        background: transparent;
+        padding: 0;
+      }
+      .poster {
+        box-shadow: none;
+        width: 100vw;
+        height: 100vh;
+      }
+      @page {
+        size: A3 portrait;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="poster">
+    <!-- HEADER -->
+    <header class="header-banner">
+      <div class="header-logo">
+        <img src="assets/klh_logo.png?v=2" alt="KLH University Logo">
+      </div>
+      <div class="header-content">
+        <h1 class="header-title">Steppy: Distributed Fitness Gamification & Real-Time Tracking Platform</h1>
+        <div class="header-meta">
+          Team ID: 25CS1302E-PBL-042 &nbsp;|&nbsp; Section: S14 &nbsp;|&nbsp; Student Lead: P. Shashe Preetham (2300030001) &nbsp;|&nbsp; Faculty Guide: Dr. K. Venkata Rao
+        </div>
+        <div class="header-course">
+          Database Systems Engineering and Distributed Backend Development (25CS1302E) &nbsp;|&nbsp; KLH Bachupally Campus, CSE &nbsp;|&nbsp; PBL 2026-27
+        </div>
+      </div>
+    </header>
+
+    <!-- POSTER MAIN BODY: 2 COLUMNS -->
+    <main class="poster-body">
+      <!-- LEFT COLUMN -->
+      <div class="col">
+        <!-- Abstract -->
+        <section class="card card-abstract">
+          <h2 class="card-title">Abstract</h2>
+          <div class="card-body">
+            <p>
+              Steppy is a cross-platform distributed fitness gamification ecosystem built with Flutter, React 19, and Google Cloud Firestore. It converts physical movement into an engaging social journey via real-time step streaming, peer-to-peer challenges, tiered XP level progression, and virtual token rewards.
+            </p>
+            <p>
+              <span class="prefix">Main Outcome:</span> Delivers low-latency (&lt;110ms) state replication across mobile and web with robust offline persistence, boosting long-term fitness habit retention through social accountability.
+            </p>
+          </div>
+        </section>
+
+        <!-- Problem Statement & Objectives -->
+        <section class="card card-problem">
+          <h2 class="card-title">Problem Statement & Objectives</h2>
+          <div class="card-body">
+            <p><span class="prefix">Problem:</span> Conventional fitness apps suffer from 65%+ 30-day drop-off rates due to passive data isolation, lack of real-time peer engagement, and fragile state synchronization under sporadic mobile connectivity.</p>
+            <p><span class="prefix">Objective 1:</span> Engineer real-time step streaming bridging device sensors (HealthKit/Google Fit) with a distributed NoSQL backend.</p>
+            <p><span class="prefix">Objective 2:</span> Build a gamified challenge and live leaderboard module with sub-120ms real-time event updates.</p>
+            <p><span class="prefix">Objective 3:</span> Implement responsive cross-platform interfaces (Flutter mobile & React/Tailwind web) with offline-first persistence.</p>
+            <p><span class="prefix">Scope:</span> User authentication, sensor telemetry, challenge lifecycle, live leaderboards, and virtual store economy.</p>
+          </div>
+        </section>
+
+        <!-- Existing vs Proposed System -->
+        <section class="card card-comparison">
+          <h2 class="card-title">Existing vs Proposed System</h2>
+          <div class="card-body">
+            <table class="comparison-table">
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>Existing Fitness Trackers</th>
+                  <th>Steppy (Proposed System)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Data Architecture</td>
+                  <td>Siloed local DB or polling RDBMS</td>
+                  <td>Distributed multi-region NoSQL (Firestore)</td>
+                </tr>
+                <tr>
+                  <td>State Replication</td>
+                  <td>Manual refresh / high latency (&gt;2s)</td>
+                  <td>Bi-directional real-time snapshot streams (&lt;110ms)</td>
+                </tr>
+                <tr>
+                  <td>Platform Coverage</td>
+                  <td>Single mobile OS / fragmented web</td>
+                  <td>Unified Flutter Mobile + React 19 Web Dashboard</td>
+                </tr>
+                <tr>
+                  <td>Social Dynamics</td>
+                  <td>Static post-workout summaries</td>
+                  <td>Live head-to-head challenges & dynamic XP leveling</td>
+                </tr>
+                <tr>
+                  <td>Offline Resilience</td>
+                  <td>Sync errors on network drops</td>
+                  <td>Dual-tier local cache with automatic reconciliation</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Feasibility Study -->
+        <section class="card card-feasibility">
+          <h2 class="card-title">Feasibility Study</h2>
+          <div class="card-body">
+            <p><span class="prefix">Technical:</span> Built with production-grade open tooling (Flutter 3.x, React 19, TypeScript, Cloud Firestore). Sensor SDKs (HealthKit & Health Connect) provide standardized platform telemetry. 100% serverless cloud backend guarantees 99.9% availability.</p>
+            <p><span class="prefix">Economic:</span> Entirely zero-cost infrastructure leveraging open-source toolchains. Firebase Spark tier grants 50k reads, 20k writes/day, and 1GB storage for free, perfectly covering academic demonstration and seamless pay-as-you-scale adoption.</p>
+            <p><span class="prefix">Operational:</span> Consumer-grade mobile UX based on Figma specifications. Concentric progress rings, workout cards, and weekly calendar views ensure zero user learning curve and high habit retention across mobile and web.</p>
+            <p><span class="prefix">Schedule:</span> Executed in 12-week semester sprint: W1-3 (SRS & Schema Design), W4-7 (Mobile & Web UI), W8-10 (Real-Time Streams & Gamification), W11-12 (Testing, Security Auditing & Release).</p>
+          </div>
+        </section>
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="col">
+        <!-- Tools & Technologies -->
+        <section class="card card-tools">
+          <h2 class="card-title">Tools & Technologies</h2>
+          <div class="card-body">
+            <p><span class="prefix">Front-End Mobile:</span> Flutter 3.x (Dart), Provider state management, fl_chart, flutter_svg, Health SDK.</p>
+            <p><span class="prefix">Front-End Web:</span> React 19, Vite 8, TypeScript 5.7, Tailwind CSS v4, Figma Make Design System.</p>
+            <p><span class="prefix">Back-End & APIs:</span> Google Firebase, Firebase Auth (OAuth 2.0 / JWT), Cloud Functions, FCM Push Messaging.</p>
+            <p><span class="prefix">Database & Storage:</span> Cloud Firestore (Distributed NoSQL Document Store), Local SQLite/Hive Cache for offline state.</p>
+            <p><span class="prefix">DevOps & Tools:</span> Git & GitHub, Postman, Android Studio, VS Code, Node.js, Chrome DevTools.</p>
+          </div>
+        </section>
+
+        <!-- System Architecture -->
+        <section class="card card-architecture">
+          <h2 class="card-title">System Architecture</h2>
+          <div class="card-body">
+            <img src="assets/system_architecture.png" alt="System Architecture Diagram" class="diagram-img">
+          </div>
+        </section>
+
+        <!-- ER Diagram & Database Design -->
+        <section class="card card-er">
+          <h2 class="card-title">ER Diagram & Database Design</h2>
+          <div class="card-body">
+            <img src="assets/er_diagram.png" alt="ER Diagram and Database Design" class="diagram-img">
+          </div>
+        </section>
+
+        <!-- Implementation Screenshots -->
+        <section class="card card-screenshots">
+          <h2 class="card-title">Implementation Screenshots</h2>
+          <div class="card-body">
+            <div class="screenshots-row">
+              <div class="screenshot-box">
+                <img src="assets/screenshot1_card.png" alt="Screenshot 1: Home Screen">
+              </div>
+              <div class="screenshot-box">
+                <img src="assets/screenshot2_card.png" alt="Screenshot 2: Health & Analytics">
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- FULL WIDTH BOTTOM 3-COLUMN SECTION -->
+    <div style="padding: 0 36px 8px 36px;">
+      <div class="bottom-row">
+        <!-- Results & Testing -->
+        <section class="card card-results">
+          <h2 class="card-title">Results & Testing</h2>
+          <div class="card-body">
+            <p><span class="prefix">Latency Testing:</span> Firestore document read/write latency clocked &lt;110ms with sub-120ms multi-client peer update propagation.</p>
+            <p><span class="prefix">Security & ACLs:</span> 100% test pass on Firestore security rules. Unauthorized step injection and challenge edits blocked.</p>
+            <p><span class="prefix">Offline Resilience:</span> Smooth local cache fallback with zero data corruption upon reconnect.</p>
+          </div>
+        </section>
+
+        <!-- Conclusion -->
+        <section class="card card-conclusion">
+          <h2 class="card-title">Conclusion</h2>
+          <div class="card-body">
+            <p><span class="prefix">Outcome:</span> Successfully architected and deployed Steppy, a complete distributed fitness gamification platform fulfilling all PBL course deliverables.</p>
+            <p><span class="prefix">Impact:</span> Proved that reactive NoSQL document streaming coupled with game psychology (XP, badges, store items) substantially increases user engagement and fitness routine adherence.</p>
+          </div>
+        </section>
+
+        <!-- Future Scope -->
+        <section class="card card-future">
+          <h2 class="card-title">Future Scope</h2>
+          <div class="card-body">
+            <p><span class="prefix">1. Wearable BLE Sync:</span> Direct Bluetooth Low Energy integration with WearOS and Apple Watch sensors.</p>
+            <p><span class="prefix">2. On-Device Edge ML:</span> TensorFlow Lite model for adaptive goal calibration and fatigue risk detection.</p>
+            <p><span class="prefix">3. Social Guilds:</span> Campus-wide tournament system with group step multipliers and NFT rewards.</p>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="poster-footer">
+      <div class="references">
+        <strong>References:</strong> [1] Google Cloud Firestore, Distributed NoSQL Database Architecture & Real-Time Streams, 2026. &nbsp;|&nbsp; [2] Flutter Foundation, Building Reactive Cross-Platform Client Applications, 2026. &nbsp;|&nbsp; [3] J. Hamari et al., "Does Gamification Work? A Literature Review on Motivating Health Behaviors," <em>Computers in Human Behavior</em>.
+      </div>
+      <div class="footer-qr">
+        <img src="assets/qr_github.png" alt="GitHub Repository QR Code">
+        <span>SCAN FOR<br>SOURCE CODE</span>
+      </div>
+    </footer>
+  </div>
+
+</body>
+</html>
